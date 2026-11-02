@@ -4,16 +4,13 @@ import cors from "cors"
 
 const port = process.env.PORT; 
 
-
-
 const app = express();
 
 // Middlewares 
 app.use(express.json());
 app.use(cors())
 
-app.use("/api/docs", swaggerRouter) 
-
+app.use("/api/docs", swaggerRouter);
 
 app.get("/", (req: Request, res: Response) => {
     /*#swagger.tags = ['Tests']*/
