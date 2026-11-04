@@ -83,13 +83,19 @@
             "schema": {
               "type": "object",
               "properties": {
-                "name": {
+                "product_name": {
                   "example": "any"
                 },
-                "description": {
+                "product_description": {
                   "example": "any"
                 },
                 "price": {
+                  "example": "any"
+                },
+                "cost": {
+                  "example": "any"
+                },
+                "stock": {
                   "example": "any"
                 }
               }
@@ -131,6 +137,12 @@
                 },
                 "price": {
                   "example": "any"
+                },
+                "cost": {
+                  "example": "any"
+                },
+                "stock": {
+                  "example": "any"
                 }
               }
             }
@@ -139,6 +151,9 @@
         "responses": {
           "201": {
             "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
           },
           "500": {
             "description": "Internal Server Error"

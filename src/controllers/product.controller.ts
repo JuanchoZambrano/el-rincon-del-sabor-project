@@ -35,9 +35,9 @@ export async function getProductId(req: Request, res: Response) {
 export async function createNewProduct(req: Request, res: Response) {
   /*#swagger.tags = ['Products']
   #swagger.summary = 'Crear un nuevo producto agregando todas sus propiedades' */
-  const { product_name, product_description, price } = req.body;
+  const { product_name, product_description, price, cost, stock } = req.body;
   try {
-    const newProduct = await createProduct(product_name, product_description, price);
+    const newProduct = await createProduct(product_name, product_description, price, cost, stock);
     res.status(201).json(newProduct);
   } catch (error) {
     console.error(error);
@@ -49,13 +49,15 @@ export async function updateProduct(req: Request, res: Response) {
   /*#swagger.tags = ['Products']
   #swagger.summary = 'Actualizar un producto existente modificando todas sus propiedades' */
   const productId = Number(req.params.id);
-  const { name, description, price } = req.body;
+  const { product_name, product_description, price, cost, stock } = req.body;
   try {
     const updatedProduct = await updateProductById(
       productId,
-      name,
-      description,
+      product_name,
+      product_description,
       price,
+      cost,
+      stock
     );
     if (!updatedProduct) {
       return res.status(404).json({ error: "Producto no encontrado." });
