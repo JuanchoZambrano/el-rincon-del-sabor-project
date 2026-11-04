@@ -1,4 +1,6 @@
-import { Pool } from "pg";
+import { Pool, types } from "pg";
+
+types.setTypeParser(1700, (val) => (val !== null ? parseFloat(val) : null));
 
 export const pool = new Pool({
   host: process.env.DB_HOST,
