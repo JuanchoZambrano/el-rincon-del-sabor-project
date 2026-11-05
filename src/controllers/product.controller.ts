@@ -6,7 +6,9 @@ import {
   updateProductById,
 } from "../models/product.model.js";
 
-export async function getMenu(req: Request, res: Response) {
+export async function getProductsMenu(req: Request, res: Response) {
+  /*#swagger.tags = ['Products']
+  #swagger.summary = 'Obtener lista completa del menu de productos */
   try {
     const products = await getAllProducts();
     res.json(products);
