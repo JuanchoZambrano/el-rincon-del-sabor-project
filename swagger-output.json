@@ -26,13 +26,14 @@
     },
     "/api/menu": {
       "get": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "Obtener lista completa del menu de productos",
         "description": "",
         "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "500": {
-            "description": "Internal Server Error"
+          "default": {
+            "description": ""
           }
         }
       }
@@ -157,6 +158,138 @@
           },
           "500": {
             "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/customers": {
+      "get": {
+        "tags": [
+          "Customers"
+        ],
+        "summary": "Obtener lista completa de Customers",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Customers"
+        ],
+        "summary": "Crear un customer",
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Datos del customer",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "customer_name": {
+                  "type": "string",
+                  "example": "Nombre de ejemplo"
+                },
+                "email": {
+                  "type": "string",
+                  "example": ""
+                },
+                "phone_number": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/customers/{id}": {
+      "get": {
+        "tags": [
+          "Customers"
+        ],
+        "summary": "Obtener un Customer por su ID",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Customers"
+        ],
+        "summary": "Actualiza un customer seleccionando su ID",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Datos del customer",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "customer_name": {
+                  "type": "string",
+                  "example": "Nombre de ejemplo"
+                },
+                "email": {
+                  "type": "string",
+                  "example": ""
+                },
+                "phone_number": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
           }
         }
       }

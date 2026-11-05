@@ -1,6 +1,7 @@
 import express, { type Request, type Response } from "express"; 
 import swaggerRouter from "./routes/swagger.router.js";
 import productRouter from "./routes/product.routes.js";
+import customerRouter from "./routes/customer.routes.js";
 import cors from "cors"
 
 const port = process.env.PORT; 
@@ -13,6 +14,7 @@ app.use(cors())
 
 app.use("/api/docs", swaggerRouter);
 app.use("/api", productRouter);
+app.use("/api", customerRouter);
 
 
 app.get("/", (req: Request, res: Response) => {
