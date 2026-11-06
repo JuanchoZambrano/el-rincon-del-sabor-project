@@ -29,11 +29,36 @@
         "tags": [
           "Products"
         ],
-        "summary": "Obtener lista completa del menu de productos",
-        "description": "",
+        "description": "Obtener lista completa del menu de productos",
+        "parameters": [
+          {
+            "name": "maxPrice",
+            "in": "query",
+            "description": "Filtrar productos por precio máximo",
+            "required": false,
+            "type": "number"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Numero de pagina",
+            "required": false,
+            "type": "number"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Limite de datos para mostrar por pagina",
+            "required": false,
+            "type": "number"
+          }
+        ],
         "responses": {
-          "default": {
-            "description": ""
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
@@ -290,6 +315,99 @@
         "responses": {
           "default": {
             "description": ""
+          }
+        }
+      }
+    },
+    "/api/sales": {
+      "get": {
+        "tags": [
+          "Sales"
+        ],
+        "summary": "Obtener lista completa de Sales",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Sales"
+        ],
+        "summary": "Crear una sale",
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Datos requeridos para registrar una venta",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "sale_address": {
+                  "type": "string",
+                  "example": "Calle"
+                },
+                "phone_number": {
+                  "type": "string",
+                  "example": "123456789"
+                },
+                "customer_id": {
+                  "type": "number",
+                  "example": 1
+                },
+                "sale_date": {
+                  "type": "string",
+                  "example": "2026-11-06"
+                },
+                "sale_status": {
+                  "type": "boolean",
+                  "example": true
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/sales/{id}": {
+      "get": {
+        "tags": [
+          "Sales"
+        ],
+        "summary": "Obtener una sale por su ID",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
